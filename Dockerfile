@@ -55,13 +55,7 @@ RUN set -xe; \
       cd /cpuminer;
 
 # Copy our docker assets.
-COPY ./ /var/tmp
-
-# Move our assets
-RUN set -xe; \
-    mv /var/tmp/docker-entrypoint.sh /usr/local/bin/entrypoint.sh; \
-    mv /var/tmp/miner.conf /cpuminer/miner.conf.tmpl; \
-    chown cpuminer:cpuminer /cpuminer/miner.conf.tmpl;
+COPY ./docker-entrypoint.sh /usr/local/bin/entrypoint.sh
 
 # Set our ENV variables
 ENV PATH="/usr/local/bin:$PATH" \
